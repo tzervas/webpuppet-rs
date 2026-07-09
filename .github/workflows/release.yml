@@ -1,9 +1,13 @@
 name: Release
 
+# Manual only — no auto-release on tag push
 on:
-  push:
-    tags:
-      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Optional tag name for release notes context (e.g. v0.1.0)"
+        required: false
+        type: string
 
 permissions:
   contents: write
@@ -13,21 +17,25 @@ jobs:
     name: Create Release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      
+      - uses: actions/checkout@v4
+
       - name: Set up Rust
         uses: dtolnay/rust-toolchain@stable
-      
+        with:
+          components: clippy, rustfmt
+
+      - name: Pre-release local-parity checks
+        run: bash scripts/check.sh
+
       - name: Build release
         run: cargo build --release --all-features
-      
-      - name: Run tests
-        run: cargo test --all-features
-      
+
       - name: Create GitHub Release
+        if: ${{ inputs.tag != '' }}
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ inputs.tag }}
           generate_release_notes: true
-          draft: false
+          draft: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

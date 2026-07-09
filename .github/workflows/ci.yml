@@ -1,10 +1,8 @@
 name: CI
 
+# Manual only — run the same checks locally via ./scripts/check.sh
 on:
-  push:
-    branches: [main, develop]
-  pull_request:
-    types: [opened, synchronize, reopened]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -16,33 +14,27 @@ env:
 
 jobs:
   build-and-test:
-    name: Build and Test
+    name: Build and Test (local parity)
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v6
-      
-      - name: Install OpenSSL
-        run: sudo apt-get update && sudo apt-get install -y libssl-dev pkg-config
-      
+      - uses: actions/checkout@v4
+
+      - name: Install system deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libssl-dev pkg-config || true
+
       - name: Set up Rust
         uses: dtolnay/rust-toolchain@stable
         with:
           components: clippy, rustfmt
-      
+
       - name: Rust cache
         uses: Swatinem/rust-cache@v2
         with:
           key: embeddenator-webpuppet
-      
-      - name: Check formatting
-        run: cargo fmt --check
-      
-      - name: Clippy lints
-        run: cargo clippy --all-targets --all-features -- -D warnings
-      
-      - name: Build
-        run: cargo build --all-features
-      
-      - name: Run tests
-        run: cargo test --all-features --verbose
+
+      - name: Local-parity checks
+        working-directory: .
+        run: bash scripts/check.sh
