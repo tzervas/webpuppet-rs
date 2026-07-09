@@ -10,7 +10,7 @@ use std::sync::OnceLock;
 
 /// Service name for keyring entries.
 #[allow(dead_code)]
-const SERVICE_NAME: &str = "embeddenator-webpuppet";
+const SERVICE_NAME: &str = "webpuppet";
 
 static MEM_KEY: OnceLock<String> = OnceLock::new();
 
@@ -183,7 +183,7 @@ impl CredentialStore {
         key: &str,
     ) -> Result<Option<secrecy::SecretString>> {
         self.get(provider, key)
-            .map(|opt| opt.map(|s| secrecy::SecretString::new(s.into())))
+            .map(|opt| opt.map(secrecy::SecretString::new))
     }
 }
 
