@@ -1130,6 +1130,76 @@
       "summary": "See [ROADMAP.md](ROADMAP.md). Root [../ROADMAP.md](../ROADMAP.md) may hold older notes — this docs/ roadmap is the cabal-era plan."
     },
     {
+      "anchor": "assessment--tero-index",
+      "family": "doc",
+      "kind": "section",
+      "title": "Tero index",
+      "file": "docs/ASSESSMENT.md",
+      "line": 60,
+      "tag": "Empirical/Declared",
+      "summary": "Layer-1 citation index: [docs/tero-index/](tero-index/) (index.json, INDEX.md, MANIFEST.toml)."
+    },
+    {
+      "anchor": "localchecks",
+      "family": "doc",
+      "kind": "section",
+      "title": "Local checks (CI parity)",
+      "file": "docs/LOCAL_CHECKS.md",
+      "line": 1,
+      "tag": "Empirical/Declared",
+      "summary": "GitHub Actions workflows in this repo are manual only (workflowdispatch)."
+    },
+    {
+      "anchor": "localchecks--run-everything-the-remote-job-would-run",
+      "family": "doc",
+      "kind": "section",
+      "title": "Run everything the remote job would run",
+      "file": "docs/LOCAL_CHECKS.md",
+      "line": 6,
+      "tag": "Empirical/Declared",
+      "summary": "./scripts/check.sh"
+    },
+    {
+      "anchor": "localchecks--tero-index",
+      "family": "doc",
+      "kind": "section",
+      "title": "Tero index",
+      "file": "docs/LOCAL_CHECKS.md",
+      "line": 19,
+      "tag": "Empirical/Declared",
+      "summary": "python3 ../tero-mcp/scripts/generateliteindex.py --root \"$(pwd)\""
+    },
+    {
+      "anchor": "localchecks--from-a-checkout-that-can-see-the-generator-sibling-tero-mcp-recommended",
+      "family": "doc",
+      "kind": "other",
+      "title": "from a checkout that can see the generator (sibling tero-mcp recommended):",
+      "file": "docs/LOCAL_CHECKS.md",
+      "line": 22,
+      "tag": "Empirical/Declared",
+      "summary": "python3 ../tero-mcp/scripts/generateliteindex.py --root \"$(pwd)\""
+    },
+    {
+      "anchor": "localchecks--or",
+      "family": "doc",
+      "kind": "other",
+      "title": "or:",
+      "file": "docs/LOCAL_CHECKS.md",
+      "line": 24,
+      "tag": "Empirical/Declared",
+      "summary": "python3 scripts/generateteroindex.sh   # if present as a thin wrapper"
+    },
+    {
+      "anchor": "localchecks--remote-optional",
+      "family": "doc",
+      "kind": "section",
+      "title": "Remote (optional)",
+      "file": "docs/LOCAL_CHECKS.md",
+      "line": 30,
+      "tag": "Empirical/Declared",
+      "summary": "In GitHub: Actions → CI → Run workflow."
+    },
+    {
       "anchor": "roadmap-2",
       "family": "doc",
       "kind": "note",
@@ -1205,6 +1275,46 @@
       "line": 71,
       "tag": "Empirical/Declared",
       "summary": "- Bypassing auth/ToS"
+    },
+    {
+      "anchor": "readme-2",
+      "family": "doc",
+      "kind": "other",
+      "title": "Tero index (Layer 1)",
+      "file": "docs/tero-index/README.md",
+      "line": 1,
+      "tag": "Empirical/Declared",
+      "summary": "Machine + human citation index for this repository."
+    },
+    {
+      "anchor": "readme--regenerate",
+      "family": "doc",
+      "kind": "section",
+      "title": "Regenerate",
+      "file": "docs/tero-index/README.md",
+      "line": 13,
+      "tag": "Empirical/Declared",
+      "summary": "python3 /path/to/tero-mcp/scripts/generateliteindex.py --root $(pwd)"
+    },
+    {
+      "anchor": "readme--or-if-tero-mcp-is-a-sibling",
+      "family": "doc",
+      "kind": "other",
+      "title": "or if tero-mcp is a sibling:",
+      "file": "docs/tero-index/README.md",
+      "line": 17,
+      "tag": "Empirical/Declared",
+      "summary": "python3 ../tero-mcp/scripts/generateliteindex.py --root $(pwd)"
+    },
+    {
+      "anchor": "readme--serve-locally",
+      "family": "doc",
+      "kind": "section",
+      "title": "Serve locally",
+      "file": "docs/tero-index/README.md",
+      "line": 21,
+      "tag": "Empirical/Declared",
+      "summary": "export TEROTOKENS=local-dev:refresh"
     },
     {
       "anchor": "changelog",
