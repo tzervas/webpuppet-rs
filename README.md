@@ -391,3 +391,8 @@ MIT License - See [LICENSE](../../LICENSE) for details.
 ## Disclaimer
 
 This tool is for educational and research purposes only. Use of this tool to automate web interfaces may violate the terms of service of the respective providers. Users are responsible for ensuring their use complies with all applicable terms and laws.
+
+## Status & roadmap
+
+- [Assessment & gaps](docs/ASSESSMENT.md)
+- [Product roadmap & API plans](docs/ROADMAP.md)
