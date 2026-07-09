@@ -1,0 +1,1321 @@
+{
+  "generated": "Empirical/Declared — lite heading/line heuristic over markdown in webpuppet-rs via tero-mcp/scripts/generate_lite_index.py; source files are ground truth. Generated 2026-07-09.",
+  "item_tag": "Empirical/Declared",
+  "siblings": [],
+  "items": [
+    {
+      "anchor": "contributing",
+      "family": "doc",
+      "kind": "section",
+      "title": "Contributing to webpuppet",
+      "file": "CONTRIBUTING.md",
+      "line": 1,
+      "tag": "Empirical/Declared",
+      "summary": "Thank you for your interest in contributing to webpuppet! This document provides guidelines for contributing to the project."
+    },
+    {
+      "anchor": "contributing--development-setup",
+      "family": "doc",
+      "kind": "section",
+      "title": "Development Setup",
+      "file": "CONTRIBUTING.md",
+      "line": 5,
+      "tag": "Empirical/Declared",
+      "summary": "- Rust 1.75+ (latest stable recommended)"
+    },
+    {
+      "anchor": "contributing--prerequisites",
+      "family": "doc",
+      "kind": "section",
+      "title": "Prerequisites",
+      "file": "CONTRIBUTING.md",
+      "line": 7,
+      "tag": "Empirical/Declared",
+      "summary": "- Rust 1.75+ (latest stable recommended)"
+    },
+    {
+      "anchor": "contributing--setup",
+      "family": "doc",
+      "kind": "section",
+      "title": "Setup",
+      "file": "CONTRIBUTING.md",
+      "line": 13,
+      "tag": "Empirical/Declared",
+      "summary": "1. Fork and clone the repository"
+    },
+    {
+      "anchor": "contributing--platform-support",
+      "family": "doc",
+      "kind": "section",
+      "title": "Platform Support",
+      "file": "CONTRIBUTING.md",
+      "line": 19,
+      "tag": "Empirical/Declared",
+      "summary": "This project focuses on modern platforms and environments:"
+    },
+    {
+      "anchor": "contributing--code-standards",
+      "family": "doc",
+      "kind": "section",
+      "title": "Code Standards",
+      "file": "CONTRIBUTING.md",
+      "line": 39,
+      "tag": "Empirical/Declared",
+      "summary": "We follow [Conventional Commits](https://www.conventionalcommits.org/):"
+    },
+    {
+      "anchor": "contributing--commit-messages",
+      "family": "doc",
+      "kind": "section",
+      "title": "Commit Messages",
+      "file": "CONTRIBUTING.md",
+      "line": 41,
+      "tag": "Empirical/Declared",
+      "summary": "We follow [Conventional Commits](https://www.conventionalcommits.org/):"
+    },
+    {
+      "anchor": "contributing--branch-naming",
+      "family": "doc",
+      "kind": "section",
+      "title": "Branch Naming",
+      "file": "CONTRIBUTING.md",
+      "line": 70,
+      "tag": "Empirical/Declared",
+      "summary": "Follow this pattern: type/description-in-kebab-case"
+    },
+    {
+      "anchor": "contributing--code-style",
+      "family": "doc",
+      "kind": "section",
+      "title": "Code Style",
+      "file": "CONTRIBUTING.md",
+      "line": 79,
+      "tag": "Empirical/Declared",
+      "summary": "- Use rustfmt for formatting: cargo fmt"
+    },
+    {
+      "anchor": "contributing--pull-request-process",
+      "family": "doc",
+      "kind": "section",
+      "title": "Pull Request Process",
+      "file": "CONTRIBUTING.md",
+      "line": 86,
+      "tag": "Empirical/Declared",
+      "summary": "1. Ensure all tests pass: cargo test"
+    },
+    {
+      "anchor": "contributing--before-submitting",
+      "family": "doc",
+      "kind": "section",
+      "title": "Before Submitting",
+      "file": "CONTRIBUTING.md",
+      "line": 88,
+      "tag": "Empirical/Declared",
+      "summary": "1. Ensure all tests pass: cargo test"
+    },
+    {
+      "anchor": "contributing--pr-guidelines",
+      "family": "doc",
+      "kind": "section",
+      "title": "PR Guidelines",
+      "file": "CONTRIBUTING.md",
+      "line": 96,
+      "tag": "Empirical/Declared",
+      "summary": "- Use a clear, descriptive title"
+    },
+    {
+      "anchor": "contributing--review-process",
+      "family": "doc",
+      "kind": "section",
+      "title": "Review Process",
+      "file": "CONTRIBUTING.md",
+      "line": 103,
+      "tag": "Empirical/Declared",
+      "summary": "- All PRs require review before merging"
+    },
+    {
+      "anchor": "contributing--security",
+      "family": "doc",
+      "kind": "section",
+      "title": "Security",
+      "file": "CONTRIBUTING.md",
+      "line": 109,
+      "tag": "Empirical/Declared",
+      "summary": "- Do not create public issues for security vulnerabilities"
+    },
+    {
+      "anchor": "contributing--reporting-security-issues",
+      "family": "doc",
+      "kind": "section",
+      "title": "Reporting Security Issues",
+      "file": "CONTRIBUTING.md",
+      "line": 111,
+      "tag": "Empirical/Declared",
+      "summary": "- Do not create public issues for security vulnerabilities"
+    },
+    {
+      "anchor": "contributing--security-guidelines",
+      "family": "doc",
+      "kind": "section",
+      "title": "Security Guidelines",
+      "file": "CONTRIBUTING.md",
+      "line": 117,
+      "tag": "Empirical/Declared",
+      "summary": "- All user input must be validated and sanitized"
+    },
+    {
+      "anchor": "contributing--testing",
+      "family": "doc",
+      "kind": "section",
+      "title": "Testing",
+      "file": "CONTRIBUTING.md",
+      "line": 124,
+      "tag": "Empirical/Declared",
+      "summary": "- Unit tests: Test individual components"
+    },
+    {
+      "anchor": "contributing--test-categories",
+      "family": "doc",
+      "kind": "section",
+      "title": "Test Categories",
+      "file": "CONTRIBUTING.md",
+      "line": 126,
+      "tag": "Empirical/Declared",
+      "summary": "- Unit tests: Test individual components"
+    },
+    {
+      "anchor": "contributing--test-requirements",
+      "family": "doc",
+      "kind": "section",
+      "title": "Test Requirements",
+      "file": "CONTRIBUTING.md",
+      "line": 132,
+      "tag": "Empirical/Declared",
+      "summary": "- New features must include tests"
+    },
+    {
+      "anchor": "contributing--running-tests",
+      "family": "doc",
+      "kind": "section",
+      "title": "Running Tests",
+      "file": "CONTRIBUTING.md",
+      "line": 138,
+      "tag": "Empirical/Declared",
+      "summary": "cargo test"
+    },
+    {
+      "anchor": "contributing--run-all-tests",
+      "family": "doc",
+      "kind": "other",
+      "title": "Run all tests",
+      "file": "CONTRIBUTING.md",
+      "line": 140,
+      "tag": "Empirical/Declared",
+      "summary": "cargo test"
+    },
+    {
+      "anchor": "contributing--run-specific-test-category",
+      "family": "doc",
+      "kind": "other",
+      "title": "Run specific test category",
+      "file": "CONTRIBUTING.md",
+      "line": 143,
+      "tag": "Empirical/Declared",
+      "summary": "cargo test --test integration"
+    },
+    {
+      "anchor": "contributing--run-with-output",
+      "family": "doc",
+      "kind": "other",
+      "title": "Run with output",
+      "file": "CONTRIBUTING.md",
+      "line": 146,
+      "tag": "Empirical/Declared",
+      "summary": "cargo test -- --nocapture"
+    },
+    {
+      "anchor": "contributing--license",
+      "family": "doc",
+      "kind": "section",
+      "title": "License",
+      "file": "CONTRIBUTING.md",
+      "line": 150,
+      "tag": "Empirical/Declared",
+      "summary": "By contributing, you agree that your contributions will be licensed under the MIT License."
+    },
+    {
+      "anchor": "readme",
+      "family": "doc",
+      "kind": "other",
+      "title": "webpuppet",
+      "file": "README.md",
+      "line": 1,
+      "tag": "Empirical/Declared",
+      "summary": "Web Browser Programmatic Automation & Control Library"
+    },
+    {
+      "anchor": "readme--purpose-use-cases",
+      "family": "doc",
+      "kind": "section",
+      "title": "Purpose & Use Cases",
+      "file": "README.md",
+      "line": 9,
+      "tag": "Empirical/Declared",
+      "summary": "webpuppet is a quality-of-life tool for developers and researchers who need programmatic web browser control for legitimate automation use cases:"
+    },
+    {
+      "anchor": "readme--architecture",
+      "family": "doc",
+      "kind": "section",
+      "title": "Architecture",
+      "file": "README.md",
+      "line": 22,
+      "tag": "Empirical/Declared",
+      "summary": "webpuppet is designed as a foundational library that can be integrated into larger research automation systems. The library itself provides core automation cap…"
+    },
+    {
+      "anchor": "readme--security-model",
+      "family": "doc",
+      "kind": "section",
+      "title": "Security Model",
+      "file": "README.md",
+      "line": 26,
+      "tag": "Empirical/Declared",
+      "summary": "- Primary Library: webpuppet (this crate) - provides browser automation and session management"
+    },
+    {
+      "anchor": "readme--overview",
+      "family": "doc",
+      "kind": "section",
+      "title": "Overview",
+      "file": "README.md",
+      "line": 34,
+      "tag": "Empirical/Declared",
+      "summary": "webpuppet enables programmatic browser automation and control through native browser APIs when traditional methods (like API-only access) are unavailable or re…"
+    },
+    {
+      "anchor": "readme--features",
+      "family": "doc",
+      "kind": "section",
+      "title": "Features",
+      "file": "README.md",
+      "line": 44,
+      "tag": "Empirical/Declared",
+      "summary": "- Multi-Provider Support: Built-in support for multiple web interfaces (Claude, Grok, Gemini, ChatGPT, Perplexity, NotebookLM, Kaggle)"
+    },
+    {
+      "anchor": "readme--installation",
+      "family": "doc",
+      "kind": "section",
+      "title": "Installation",
+      "file": "README.md",
+      "line": 55,
+      "tag": "Empirical/Declared",
+      "summary": "Add to your Cargo.toml:"
+    },
+    {
+      "anchor": "readme--feature-flags",
+      "family": "doc",
+      "kind": "section",
+      "title": "Feature Flags",
+      "file": "README.md",
+      "line": 73,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "readme--usage",
+      "family": "doc",
+      "kind": "section",
+      "title": "Usage",
+      "file": "README.md",
+      "line": 88,
+      "tag": "Empirical/Declared",
+      "summary": "use webpuppet::{WebPuppet, Provider, PromptRequest};"
+    },
+    {
+      "anchor": "readme--basic-prompt",
+      "family": "doc",
+      "kind": "section",
+      "title": "Basic Prompt",
+      "file": "README.md",
+      "line": 90,
+      "tag": "Empirical/Declared",
+      "summary": "use webpuppet::{WebPuppet, Provider, PromptRequest};"
+    },
+    {
+      "anchor": "readme--multi-provider-query",
+      "family": "doc",
+      "kind": "section",
+      "title": "Multi-Provider Query",
+      "file": "README.md",
+      "line": 120,
+      "tag": "Empirical/Declared",
+      "summary": "use webpuppet::{WebPuppet, Provider, PromptRequest};"
+    },
+    {
+      "anchor": "readme--conversation-mode",
+      "family": "doc",
+      "kind": "section",
+      "title": "Conversation Mode",
+      "file": "README.md",
+      "line": 152,
+      "tag": "Empirical/Declared",
+      "summary": "use webpuppet::{WebPuppet, Provider, PromptRequest};"
+    },
+    {
+      "anchor": "readme--authentication-flow",
+      "family": "doc",
+      "kind": "section",
+      "title": "Authentication Flow",
+      "file": "README.md",
+      "line": 186,
+      "tag": "Empirical/Declared",
+      "summary": "On first use with each provider:"
+    },
+    {
+      "anchor": "readme--configuration",
+      "family": "doc",
+      "kind": "section",
+      "title": "Configuration",
+      "file": "README.md",
+      "line": 210,
+      "tag": "Empirical/Declared",
+      "summary": "use webpuppet::{Config, WebPuppet};"
+    },
+    {
+      "anchor": "readme--provider-capabilities",
+      "family": "doc",
+      "kind": "section",
+      "title": "Provider Capabilities",
+      "file": "README.md",
+      "line": 230,
+      "tag": "Empirical/Declared",
+      "summary": "Capabilities are declared per provider in code (not runtime UI detection yet). For programmatic access, use WebPuppet::providercapabilities()."
+    },
+    {
+      "anchor": "readme--security",
+      "family": "doc",
+      "kind": "section",
+      "title": "Security",
+      "file": "README.md",
+      "line": 243,
+      "tag": "Empirical/Declared",
+      "summary": "- Credentials: Stored in OS keyring, never in plaintext files"
+    },
+    {
+      "anchor": "readme--limitations",
+      "family": "doc",
+      "kind": "section",
+      "title": "Limitations",
+      "file": "README.md",
+      "line": 251,
+      "tag": "Empirical/Declared",
+      "summary": "- Pre-release software: APIs may change without notice"
+    },
+    {
+      "anchor": "readme--content-security-screening",
+      "family": "doc",
+      "kind": "section",
+      "title": "Content Security Screening",
+      "file": "README.md",
+      "line": 259,
+      "tag": "Empirical/Declared",
+      "summary": "The library includes built-in security screening for AI responses:"
+    },
+    {
+      "anchor": "readme--detected-security-issues",
+      "family": "doc",
+      "kind": "section",
+      "title": "Detected Security Issues",
+      "file": "README.md",
+      "line": 291,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "readme--custom-screening-configuration",
+      "family": "doc",
+      "kind": "section",
+      "title": "Custom Screening Configuration",
+      "file": "README.md",
+      "line": 304,
+      "tag": "Empirical/Declared",
+      "summary": "use webpuppet::{WebPuppet, ScreeningConfig};"
+    },
+    {
+      "anchor": "readme--architecture-2",
+      "family": "doc",
+      "kind": "section",
+      "title": "Architecture",
+      "file": "README.md",
+      "line": 326,
+      "tag": "Empirical/Declared",
+      "summary": "webpuppet/"
+    },
+    {
+      "anchor": "readme--system-requirements",
+      "family": "doc",
+      "kind": "section",
+      "title": "System Requirements",
+      "file": "README.md",
+      "line": 347,
+      "tag": "Empirical/Declared",
+      "summary": "- Rust: 1.75.0 or newer (latest stable recommended)"
+    },
+    {
+      "anchor": "readme--troubleshooting",
+      "family": "doc",
+      "kind": "section",
+      "title": "Troubleshooting",
+      "file": "README.md",
+      "line": 358,
+      "tag": "Empirical/Declared",
+      "summary": "// Force re-authentication"
+    },
+    {
+      "anchor": "readme--session-expired",
+      "family": "doc",
+      "kind": "section",
+      "title": "Session Expired",
+      "file": "README.md",
+      "line": 360,
+      "tag": "Empirical/Declared",
+      "summary": "// Force re-authentication"
+    },
+    {
+      "anchor": "readme--rate-limited",
+      "family": "doc",
+      "kind": "section",
+      "title": "Rate Limited",
+      "file": "README.md",
+      "line": 367,
+      "tag": "Empirical/Declared",
+      "summary": "The library automatically handles rate limits with exponential backoff. If you're consistently hitting limits, increase the delay:"
+    },
+    {
+      "anchor": "readme--browser-not-found",
+      "family": "doc",
+      "kind": "section",
+      "title": "Browser Not Found",
+      "file": "README.md",
+      "line": 377,
+      "tag": "Empirical/Declared",
+      "summary": "use std::path::PathBuf;"
+    },
+    {
+      "anchor": "readme--license",
+      "family": "doc",
+      "kind": "section",
+      "title": "License",
+      "file": "README.md",
+      "line": 387,
+      "tag": "Empirical/Declared",
+      "summary": "MIT License - See [LICENSE](../../LICENSE) for details."
+    },
+    {
+      "anchor": "readme--disclaimer",
+      "family": "doc",
+      "kind": "section",
+      "title": "Disclaimer",
+      "file": "README.md",
+      "line": 391,
+      "tag": "Empirical/Declared",
+      "summary": "This tool is for educational and research purposes only. Use of this tool to automate web interfaces may violate the terms of service of the respective provide…"
+    },
+    {
+      "anchor": "readme--status-roadmap",
+      "family": "doc",
+      "kind": "section",
+      "title": "Status & roadmap",
+      "file": "README.md",
+      "line": 395,
+      "tag": "Empirical/Declared",
+      "summary": "- [Assessment & gaps](docs/ASSESSMENT.md)"
+    },
+    {
+      "anchor": "roadmap",
+      "family": "doc",
+      "kind": "note",
+      "title": "webpuppet: Next Enhancement Roadmap",
+      "file": "ROADMAP.md",
+      "line": 1,
+      "tag": "Empirical/Declared",
+      "summary": "Current Status: v0.1.0-alpha.3 - Multi-browser support, cross-platform detection"
+    },
+    {
+      "anchor": "roadmap--version-0.2.0-development-plan",
+      "family": "doc",
+      "kind": "section",
+      "title": "Version 0.2.0 Development Plan",
+      "file": "ROADMAP.md",
+      "line": 2,
+      "tag": "Empirical/Declared",
+      "summary": "Current Status: v0.1.0-alpha.3 - Multi-browser support, cross-platform detection"
+    },
+    {
+      "anchor": "roadmap--platform-strategy",
+      "family": "doc",
+      "kind": "section",
+      "title": "Platform Strategy",
+      "file": "ROADMAP.md",
+      "line": 9,
+      "tag": "Empirical/Declared",
+      "summary": "Target Platforms (Modern Focus):"
+    },
+    {
+      "anchor": "roadmap--phase-1-core-reliability-stability",
+      "family": "doc",
+      "kind": "section",
+      "title": "Phase 1: Core Reliability & Stability 🔧",
+      "file": "ROADMAP.md",
+      "line": 34,
+      "tag": "Empirical/Declared",
+      "summary": "Timeline: 2-3 weeks"
+    },
+    {
+      "anchor": "roadmap--1.1-error-handling-recovery",
+      "family": "doc",
+      "kind": "section",
+      "title": "1.1 Error Handling & Recovery",
+      "file": "ROADMAP.md",
+      "line": 37,
+      "tag": "Empirical/Declared",
+      "summary": "- Robust Connection Management"
+    },
+    {
+      "anchor": "roadmap--1.2-performance-optimization",
+      "family": "doc",
+      "kind": "section",
+      "title": "1.2 Performance Optimization",
+      "file": "ROADMAP.md",
+      "line": 53,
+      "tag": "Empirical/Declared",
+      "summary": "- Resource Management"
+    },
+    {
+      "anchor": "roadmap--1.3-comprehensive-testing",
+      "family": "doc",
+      "kind": "section",
+      "title": "1.3 Comprehensive Testing",
+      "file": "ROADMAP.md",
+      "line": 64,
+      "tag": "Empirical/Declared",
+      "summary": "- Integration Test Suite"
+    },
+    {
+      "anchor": "roadmap--phase-2-advanced-features",
+      "family": "doc",
+      "kind": "section",
+      "title": "Phase 2: Advanced Features 🚀",
+      "file": "ROADMAP.md",
+      "line": 77,
+      "tag": "Empirical/Declared",
+      "summary": "Timeline: 3-4 weeks"
+    },
+    {
+      "anchor": "roadmap--2.1-enhanced-provider-support",
+      "family": "doc",
+      "kind": "section",
+      "title": "2.1 Enhanced Provider Support",
+      "file": "ROADMAP.md",
+      "line": 80,
+      "tag": "Empirical/Declared",
+      "summary": "- Universal File Handling"
+    },
+    {
+      "anchor": "roadmap--2.2-advanced-automation",
+      "family": "doc",
+      "kind": "section",
+      "title": "2.2 Advanced Automation",
+      "file": "ROADMAP.md",
+      "line": 96,
+      "tag": "Empirical/Declared",
+      "summary": "- Workflow Engine"
+    },
+    {
+      "anchor": "roadmap--2.3-monitoring-observability",
+      "family": "doc",
+      "kind": "section",
+      "title": "2.3 Monitoring & Observability",
+      "file": "ROADMAP.md",
+      "line": 107,
+      "tag": "Empirical/Declared",
+      "summary": "- Metrics Collection"
+    },
+    {
+      "anchor": "roadmap--phase-3-enterprise-features",
+      "family": "doc",
+      "kind": "section",
+      "title": "Phase 3: Enterprise Features 📈",
+      "file": "ROADMAP.md",
+      "line": 120,
+      "tag": "Empirical/Declared",
+      "summary": "Timeline: 4-5 weeks"
+    },
+    {
+      "anchor": "roadmap--3.1-multi-user-team-support",
+      "family": "doc",
+      "kind": "section",
+      "title": "3.1 Multi-User & Team Support",
+      "file": "ROADMAP.md",
+      "line": 123,
+      "tag": "Empirical/Declared",
+      "summary": "- User Management"
+    },
+    {
+      "anchor": "roadmap--3.2-integration-ecosystem",
+      "family": "doc",
+      "kind": "section",
+      "title": "3.2 Integration Ecosystem",
+      "file": "ROADMAP.md",
+      "line": 134,
+      "tag": "Empirical/Declared",
+      "summary": "- MCP Server Implementation"
+    },
+    {
+      "anchor": "roadmap--3.3-advanced-security",
+      "family": "doc",
+      "kind": "section",
+      "title": "3.3 Advanced Security",
+      "file": "ROADMAP.md",
+      "line": 150,
+      "tag": "Empirical/Declared",
+      "summary": "- Audit & Compliance"
+    },
+    {
+      "anchor": "roadmap--phase-4-platform-deployment",
+      "family": "doc",
+      "kind": "section",
+      "title": "Phase 4: Platform & Deployment 🌐",
+      "file": "ROADMAP.md",
+      "line": 163,
+      "tag": "Empirical/Declared",
+      "summary": "Timeline: 3-4 weeks"
+    },
+    {
+      "anchor": "roadmap--4.1-container-cloud-native",
+      "family": "doc",
+      "kind": "section",
+      "title": "4.1 Container & Cloud Native",
+      "file": "ROADMAP.md",
+      "line": 166,
+      "tag": "Empirical/Declared",
+      "summary": "- Docker Support"
+    },
+    {
+      "anchor": "roadmap--4.2-configuration-management",
+      "family": "doc",
+      "kind": "section",
+      "title": "4.2 Configuration & Management",
+      "file": "ROADMAP.md",
+      "line": 177,
+      "tag": "Empirical/Declared",
+      "summary": "- Configuration Management"
+    },
+    {
+      "anchor": "roadmap--technical-debt-maintenance",
+      "family": "doc",
+      "kind": "section",
+      "title": "Technical Debt & Maintenance 🛠️",
+      "file": "ROADMAP.md",
+      "line": 190,
+      "tag": "Empirical/Declared",
+      "summary": "Ongoing throughout all phases"
+    },
+    {
+      "anchor": "roadmap--code-quality",
+      "family": "doc",
+      "kind": "section",
+      "title": "Code Quality",
+      "file": "ROADMAP.md",
+      "line": 193,
+      "tag": "Empirical/Declared",
+      "summary": "- Refactoring Priorities"
+    },
+    {
+      "anchor": "roadmap--documentation-developer-experience",
+      "family": "doc",
+      "kind": "section",
+      "title": "Documentation & Developer Experience",
+      "file": "ROADMAP.md",
+      "line": 204,
+      "tag": "Empirical/Declared",
+      "summary": "- API Documentation"
+    },
+    {
+      "anchor": "roadmap--risk-assessment-mitigation",
+      "family": "doc",
+      "kind": "section",
+      "title": "Risk Assessment & Mitigation",
+      "file": "ROADMAP.md",
+      "line": 217,
+      "tag": "Empirical/Declared",
+      "summary": "1. Provider UI Changes: Continuous monitoring and rapid response team"
+    },
+    {
+      "anchor": "roadmap--high-risk-items",
+      "family": "doc",
+      "kind": "section",
+      "title": "High-Risk Items",
+      "file": "ROADMAP.md",
+      "line": 219,
+      "tag": "Empirical/Declared",
+      "summary": "1. Provider UI Changes: Continuous monitoring and rapid response team"
+    },
+    {
+      "anchor": "roadmap--mitigation-strategies",
+      "family": "doc",
+      "kind": "section",
+      "title": "Mitigation Strategies",
+      "file": "ROADMAP.md",
+      "line": 224,
+      "tag": "Empirical/Declared",
+      "summary": "- Provider Monitoring: Automated UI change detection"
+    },
+    {
+      "anchor": "roadmap--success-metrics",
+      "family": "doc",
+      "kind": "section",
+      "title": "Success Metrics",
+      "file": "ROADMAP.md",
+      "line": 231,
+      "tag": "Empirical/Declared",
+      "summary": "- Reliability: 99.5% uptime for supported providers"
+    },
+    {
+      "anchor": "roadmap--technical-metrics",
+      "family": "doc",
+      "kind": "section",
+      "title": "Technical Metrics",
+      "file": "ROADMAP.md",
+      "line": 233,
+      "tag": "Empirical/Declared",
+      "summary": "- Reliability: 99.5% uptime for supported providers"
+    },
+    {
+      "anchor": "roadmap--user-experience-metrics",
+      "family": "doc",
+      "kind": "section",
+      "title": "User Experience Metrics",
+      "file": "ROADMAP.md",
+      "line": 238,
+      "tag": "Empirical/Declared",
+      "summary": "- Ease of Use: New user onboarding in <10 minutes"
+    },
+    {
+      "anchor": "roadmap--business-metrics",
+      "family": "doc",
+      "kind": "section",
+      "title": "Business Metrics",
+      "file": "ROADMAP.md",
+      "line": 243,
+      "tag": "Empirical/Declared",
+      "summary": "- Integration Success: MCP server adoption in production environments"
+    },
+    {
+      "anchor": "securityaudit",
+      "family": "doc",
+      "kind": "section",
+      "title": "Security Audit Report",
+      "file": "SECURITY_AUDIT.md",
+      "line": 1,
+      "tag": "Empirical/Declared",
+      "status": "✅ PASSED",
+      "summary": "Date: January 6, 2026"
+    },
+    {
+      "anchor": "securityaudit--webpuppet-v0.1.0-alpha.2",
+      "family": "doc",
+      "kind": "section",
+      "title": "webpuppet v0.1.0-alpha.2",
+      "file": "SECURITY_AUDIT.md",
+      "line": 2,
+      "tag": "Empirical/Declared",
+      "summary": "Date: January 6, 2026"
+    },
+    {
+      "anchor": "securityaudit--executive-summary",
+      "family": "doc",
+      "kind": "section",
+      "title": "Executive Summary",
+      "file": "SECURITY_AUDIT.md",
+      "line": 8,
+      "tag": "Empirical/Declared",
+      "summary": "This report documents the security review performed on webpuppet, a browser automation library for AI provider web interfaces. The project has undergone compre…"
+    },
+    {
+      "anchor": "securityaudit--security-architecture",
+      "family": "doc",
+      "kind": "section",
+      "title": "Security Architecture",
+      "file": "SECURITY_AUDIT.md",
+      "line": 12,
+      "tag": "Empirical/Declared",
+      "summary": "- Encryption Algorithm: AES-256-GCM for sensitive data at rest"
+    },
+    {
+      "anchor": "securityaudit--1.-cryptographic-implementation",
+      "family": "doc",
+      "kind": "section",
+      "title": "1. Cryptographic Implementation",
+      "file": "SECURITY_AUDIT.md",
+      "line": 14,
+      "tag": "Empirical/Declared",
+      "summary": "- Encryption Algorithm: AES-256-GCM for sensitive data at rest"
+    },
+    {
+      "anchor": "securityaudit--2.-supply-chain-security",
+      "family": "doc",
+      "kind": "section",
+      "title": "2. Supply Chain Security",
+      "file": "SECURITY_AUDIT.md",
+      "line": 20,
+      "tag": "Empirical/Declared",
+      "summary": "- Dependency Scanning: 335 dependencies verified against known vulnerability databases"
+    },
+    {
+      "anchor": "securityaudit--3.-content-security-controls",
+      "family": "doc",
+      "kind": "section",
+      "title": "3. Content Security Controls",
+      "file": "SECURITY_AUDIT.md",
+      "line": 26,
+      "tag": "Empirical/Declared",
+      "summary": "- Input Validation: All user inputs validated and sanitized"
+    },
+    {
+      "anchor": "securityaudit--risk-analysis-duplicate-dependencies",
+      "family": "doc",
+      "kind": "section",
+      "title": "Risk Analysis: Duplicate Dependencies",
+      "file": "SECURITY_AUDIT.md",
+      "line": 32,
+      "tag": "Empirical/Declared",
+      "summary": "The dependency tree contains multiple versions of certain crates, particularly in the Windows ecosystem and random number generation libraries. This creates po…"
+    },
+    {
+      "anchor": "securityaudit--problem-statement",
+      "family": "doc",
+      "kind": "section",
+      "title": "Problem Statement",
+      "file": "SECURITY_AUDIT.md",
+      "line": 34,
+      "tag": "Empirical/Declared",
+      "summary": "The dependency tree contains multiple versions of certain crates, particularly in the Windows ecosystem and random number generation libraries. This creates po…"
+    },
+    {
+      "anchor": "securityaudit--risk-assessment-mitigation",
+      "family": "doc",
+      "kind": "section",
+      "title": "Risk Assessment & Mitigation",
+      "file": "SECURITY_AUDIT.md",
+      "line": 43,
+      "tag": "Empirical/Declared",
+      "summary": "HIGH PRIORITY - Resolved:"
+    },
+    {
+      "anchor": "securityaudit--monitoring-remediation-plan",
+      "family": "doc",
+      "kind": "section",
+      "title": "Monitoring & Remediation Plan",
+      "file": "SECURITY_AUDIT.md",
+      "line": 58,
+      "tag": "Empirical/Declared",
+      "summary": "1. Quarterly Reviews: Monitor for resolution of temporary exceptions"
+    },
+    {
+      "anchor": "securityaudit--mcp-server-compatibility-assessment",
+      "family": "doc",
+      "kind": "section",
+      "title": "MCP Server Compatibility Assessment",
+      "file": "SECURITY_AUDIT.md",
+      "line": 64,
+      "tag": "Empirical/Declared",
+      "summary": "✅ Pure Library Crate: No binary artifacts, suitable for integration"
+    },
+    {
+      "anchor": "securityaudit--library-design",
+      "family": "doc",
+      "kind": "section",
+      "title": "Library Design",
+      "file": "SECURITY_AUDIT.md",
+      "line": 66,
+      "tag": "Empirical/Declared",
+      "summary": "✅ Pure Library Crate: No binary artifacts, suitable for integration"
+    },
+    {
+      "anchor": "securityaudit--security-considerations-for-mcp-usage",
+      "family": "doc",
+      "kind": "section",
+      "title": "Security Considerations for MCP Usage",
+      "file": "SECURITY_AUDIT.md",
+      "line": 72,
+      "tag": "Empirical/Declared",
+      "summary": "✅ No Privilege Escalation: Library operates within user context only"
+    },
+    {
+      "anchor": "securityaudit--recommended-mcp-integration-patterns",
+      "family": "doc",
+      "kind": "section",
+      "title": "Recommended MCP Integration Patterns",
+      "file": "SECURITY_AUDIT.md",
+      "line": 78,
+      "tag": "Empirical/Declared",
+      "summary": "- Use WebPuppet::new().build() for basic automation"
+    },
+    {
+      "anchor": "securityaudit--test-results",
+      "family": "doc",
+      "kind": "section",
+      "title": "Test Results",
+      "file": "SECURITY_AUDIT.md",
+      "line": 84,
+      "tag": "Empirical/Declared",
+      "summary": "cargo audit: ✅ PASSED (0 vulnerabilities)"
+    },
+    {
+      "anchor": "securityaudit--vulnerability-scanning",
+      "family": "doc",
+      "kind": "section",
+      "title": "Vulnerability Scanning",
+      "file": "SECURITY_AUDIT.md",
+      "line": 86,
+      "tag": "Empirical/Declared",
+      "summary": "cargo audit: ✅ PASSED (0 vulnerabilities)"
+    },
+    {
+      "anchor": "securityaudit--secret-detection",
+      "family": "doc",
+      "kind": "section",
+      "title": "Secret Detection",
+      "file": "SECURITY_AUDIT.md",
+      "line": 92,
+      "tag": "Empirical/Declared",
+      "summary": "Regex Patterns Tested: 15+"
+    },
+    {
+      "anchor": "securityaudit--dependency-analysis",
+      "family": "doc",
+      "kind": "section",
+      "title": "Dependency Analysis",
+      "file": "SECURITY_AUDIT.md",
+      "line": 99,
+      "tag": "Empirical/Declared",
+      "summary": "Total Dependencies: 335"
+    },
+    {
+      "anchor": "securityaudit--compliance-status",
+      "family": "doc",
+      "kind": "section",
+      "title": "Compliance Status",
+      "file": "SECURITY_AUDIT.md",
+      "line": 107,
+      "tag": "Empirical/Declared",
+      "summary": "- ✅ OWASP Top 10: No critical web application vulnerabilities"
+    },
+    {
+      "anchor": "securityaudit--security-standards",
+      "family": "doc",
+      "kind": "section",
+      "title": "Security Standards",
+      "file": "SECURITY_AUDIT.md",
+      "line": 109,
+      "tag": "Empirical/Declared",
+      "summary": "- ✅ OWASP Top 10: No critical web application vulnerabilities"
+    },
+    {
+      "anchor": "securityaudit--license-compliance",
+      "family": "doc",
+      "kind": "section",
+      "title": "License Compliance",
+      "file": "SECURITY_AUDIT.md",
+      "line": 114,
+      "tag": "Empirical/Declared",
+      "summary": "- ✅ Approved Licenses: MIT, Apache-2.0, BSD variants, Unicode-3.0, ISC, MPL-2.0, CDLA-Permissive-2.0"
+    },
+    {
+      "anchor": "securityaudit--deployment-recommendations",
+      "family": "doc",
+      "kind": "section",
+      "title": "Deployment Recommendations",
+      "file": "SECURITY_AUDIT.md",
+      "line": 119,
+      "tag": "Empirical/Declared",
+      "summary": "1. Environment Variables: Store sensitive config in environment, not files"
+    },
+    {
+      "anchor": "securityaudit--production-hardening",
+      "family": "doc",
+      "kind": "section",
+      "title": "Production Hardening",
+      "file": "SECURITY_AUDIT.md",
+      "line": 121,
+      "tag": "Empirical/Declared",
+      "summary": "1. Environment Variables: Store sensitive config in environment, not files"
+    },
+    {
+      "anchor": "securityaudit--mcp-server-integration",
+      "family": "doc",
+      "kind": "section",
+      "title": "MCP Server Integration",
+      "file": "SECURITY_AUDIT.md",
+      "line": 127,
+      "tag": "Empirical/Declared",
+      "summary": "1. Resource Limits: Set appropriate timeouts and memory limits"
+    },
+    {
+      "anchor": "securityaudit--conclusion",
+      "family": "doc",
+      "kind": "section",
+      "title": "Conclusion",
+      "file": "SECURITY_AUDIT.md",
+      "line": 133,
+      "tag": "Empirical/Declared",
+      "summary": "webpuppet has successfully passed comprehensive security review and is ready for production deployment. The library demonstrates strong security posture with d…"
+    },
+    {
+      "anchor": "assessment",
+      "family": "doc",
+      "kind": "note",
+      "title": "webpuppet-rs — Assessment & Gap Analysis",
+      "file": "docs/ASSESSMENT.md",
+      "line": 1,
+      "tag": "Empirical/Declared",
+      "summary": "Date: 2026-07-08"
+    },
+    {
+      "anchor": "assessment--1.-role",
+      "family": "doc",
+      "kind": "section",
+      "title": "1. Role",
+      "file": "docs/ASSESSMENT.md",
+      "line": 10,
+      "tag": "Empirical/Declared",
+      "summary": "Rust library for programmatic browser control (research, QA, automation). High ToS/risk surface — must stay opt-in, permissioned, and preferably screened."
+    },
+    {
+      "anchor": "assessment--2.-maturity-23-5",
+      "family": "doc",
+      "kind": "section",
+      "title": "2. Maturity: **2–3 / 5**",
+      "file": "docs/ASSESSMENT.md",
+      "line": 16,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "assessment--3.-branches",
+      "family": "doc",
+      "kind": "section",
+      "title": "3. Branches",
+      "file": "docs/ASSESSMENT.md",
+      "line": 28,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "assessment--4.-gaps",
+      "family": "doc",
+      "kind": "section",
+      "title": "4. Gaps",
+      "file": "docs/ASSESSMENT.md",
+      "line": 38,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "assessment--5.-integration",
+      "family": "doc",
+      "kind": "section",
+      "title": "5. Integration",
+      "file": "docs/ASSESSMENT.md",
+      "line": 50,
+      "tag": "Empirical/Declared",
+      "summary": "See [ROADMAP.md](ROADMAP.md). Root [../ROADMAP.md](../ROADMAP.md) may hold older notes — this docs/ roadmap is the cabal-era plan."
+    },
+    {
+      "anchor": "roadmap-2",
+      "family": "doc",
+      "kind": "note",
+      "title": "webpuppet-rs — Product Roadmap",
+      "file": "docs/ROADMAP.md",
+      "line": 1,
+      "tag": "Empirical/Declared",
+      "status": "Living (2026-07-08)",
+      "summary": "Status: Living (2026-07-08)"
+    },
+    {
+      "anchor": "roadmap--waves",
+      "family": "doc",
+      "kind": "section",
+      "title": "Waves",
+      "file": "docs/ROADMAP.md",
+      "line": 10,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "roadmap--wave-a-safety-baseline",
+      "family": "doc",
+      "kind": "section",
+      "title": "Wave A — Safety baseline",
+      "file": "docs/ROADMAP.md",
+      "line": 12,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "roadmap--wave-b-security-integration",
+      "family": "doc",
+      "kind": "section",
+      "title": "Wave B — Security integration",
+      "file": "docs/ROADMAP.md",
+      "line": 21,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "roadmap--wave-c-api-stability",
+      "family": "doc",
+      "kind": "section",
+      "title": "Wave C — API stability",
+      "file": "docs/ROADMAP.md",
+      "line": 29,
+      "tag": "Empirical/Declared"
+    },
+    {
+      "anchor": "roadmap--library-api-plan-target",
+      "family": "doc",
+      "kind": "section",
+      "title": "Library API plan (target)",
+      "file": "docs/ROADMAP.md",
+      "line": 39,
+      "tag": "Empirical/Declared",
+      "summary": "pub struct PuppetConfig {"
+    },
+    {
+      "anchor": "roadmap--pr-plan",
+      "family": "doc",
+      "kind": "section",
+      "title": "PR plan",
+      "file": "docs/ROADMAP.md",
+      "line": 61,
+      "tag": "Empirical/Declared",
+      "summary": "1. Docs assessment + roadmap"
+    },
+    {
+      "anchor": "roadmap--non-goals",
+      "family": "doc",
+      "kind": "section",
+      "title": "Non-goals",
+      "file": "docs/ROADMAP.md",
+      "line": 71,
+      "tag": "Empirical/Declared",
+      "summary": "- Bypassing auth/ToS"
+    },
+    {
+      "anchor": "changelog",
+      "family": "changelog",
+      "kind": "entry",
+      "title": "Changelog",
+      "file": "CHANGELOG.md",
+      "line": 1,
+      "tag": "Empirical/Declared",
+      "summary": "All notable changes to this project will be documented in this file."
+    },
+    {
+      "anchor": "changelog--unreleased",
+      "family": "changelog",
+      "kind": "section",
+      "title": "[Unreleased]",
+      "file": "CHANGELOG.md",
+      "line": 8,
+      "tag": "Empirical/Declared",
+      "summary": "- BREAKING: Renamed crate from embeddenator-webpuppet to webpuppet"
+    },
+    {
+      "anchor": "changelog--changed",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Changed",
+      "file": "CHANGELOG.md",
+      "line": 10,
+      "tag": "Empirical/Declared",
+      "summary": "- BREAKING: Renamed crate from embeddenator-webpuppet to webpuppet"
+    },
+    {
+      "anchor": "changelog--0.1.0-alpha.3-2025-01-19",
+      "family": "changelog",
+      "kind": "section",
+      "title": "[0.1.0-alpha.3] - 2025-01-19",
+      "file": "CHANGELOG.md",
+      "line": 15,
+      "tag": "Empirical/Declared",
+      "summary": "- Multi-browser support: Extended from 4 to 8 browser types (Brave, Chrome, Chromium, Edge, Opera, Vivaldi, Firefox, Safari)"
+    },
+    {
+      "anchor": "changelog--added",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Added",
+      "file": "CHANGELOG.md",
+      "line": 17,
+      "tag": "Empirical/Declared",
+      "summary": "- Multi-browser support: Extended from 4 to 8 browser types (Brave, Chrome, Chromium, Edge, Opera, Vivaldi, Firefox, Safari)"
+    },
+    {
+      "anchor": "changelog--changed-2",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Changed",
+      "file": "CHANGELOG.md",
+      "line": 26,
+      "tag": "Empirical/Declared",
+      "summary": "- CI: Bumped softprops/action-gh-release from 1 to 2"
+    },
+    {
+      "anchor": "changelog--0.1.0-alpha.2-2024-12-20",
+      "family": "changelog",
+      "kind": "section",
+      "title": "[0.1.0-alpha.2] - 2024-12-20",
+      "file": "CHANGELOG.md",
+      "line": 34,
+      "tag": "Empirical/Declared",
+      "summary": "- Comprehensive security hardening and MCP server preparation"
+    },
+    {
+      "anchor": "changelog--added-2",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Added",
+      "file": "CHANGELOG.md",
+      "line": 36,
+      "tag": "Empirical/Declared",
+      "summary": "- Comprehensive security hardening and MCP server preparation"
+    },
+    {
+      "anchor": "changelog--security",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Security",
+      "file": "CHANGELOG.md",
+      "line": 42,
+      "tag": "Empirical/Declared",
+      "summary": "- Implemented maximum security hardening measures"
+    },
+    {
+      "anchor": "changelog--0.1.0-alpha.1-2024-12-19",
+      "family": "changelog",
+      "kind": "section",
+      "title": "[0.1.0-alpha.1] - 2024-12-19",
+      "file": "CHANGELOG.md",
+      "line": 46,
+      "tag": "Empirical/Declared",
+      "summary": "- Initial alpha release"
+    },
+    {
+      "anchor": "changelog--added-3",
+      "family": "changelog",
+      "kind": "section",
+      "title": "Added",
+      "file": "CHANGELOG.md",
+      "line": 48,
+      "tag": "Empirical/Declared",
+      "summary": "- Initial alpha release"
+    }
+  ],
+  "flagged": []
+}

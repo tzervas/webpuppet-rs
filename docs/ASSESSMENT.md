@@ -56,3 +56,7 @@ Rust library for programmatic browser control (research, QA, automation). High T
 | Behind security-mcp | Required for any cabal enablement |
 
 See [ROADMAP.md](ROADMAP.md). Root [../ROADMAP.md](../ROADMAP.md) may hold older notes — this docs/ roadmap is the cabal-era plan.
+
+## Tero index
+
+Layer-1 citation index: [docs/tero-index/](tero-index/) (`index.json`, `INDEX.md`, `MANIFEST.toml`).
