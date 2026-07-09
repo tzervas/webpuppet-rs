@@ -3,16 +3,23 @@
 > **Honesty:** Empirical/Declared — lite heading/line heuristic over markdown in webpuppet-rs via tero-mcp/scripts/generate_lite_index.py; source files are ground truth. Generated 2026-07-09.
 > Use this index to find where to Read, not as authoritative ground truth.
 
-- **Items:** 143
+- **Items:** 150
 - **Flagged:** 0
 - **item_tag:** `Empirical/Declared`
 - **Machine index:** [`index.json`](./index.json)
 - **Manifest:** [`MANIFEST.toml`](./MANIFEST.toml)
 
-## doc (132 entries)
+## doc (139 entries)
 
 | Anchor | Kind | Id | Title | File:Line | Status | Summary |
 |---|---|---|---|---|---|---|
+| `agents` | other | — | AGENTS.md — webpuppet-rs | `AGENTS.md:2` | — | Use Tero + cabal-devmelopner for work here. |
+| `agents--tero-layer-1-corpus-index` | section | — | Tero (Layer-1 corpus index) | `AGENTS.md:6` | — | Repo has docs/tero-index/index.json (generated/ refreshed via tero-mcp/scripts/generateliteindex.py). |
+| `agents--agent-with-context` | other | — | agent with context: | `AGENTS.md:18` | — | uv run --project ../cabal-devmelopner cabal-devmelopner "task description here" --use-tero |
+| `agents--working-with-cabal-devmelopner-agent-tool` | section | — | Working with cabal-devmelopner agent tool | `AGENTS.md:24` | — | This project is prepared for integration: |
+| `agents--local-checks` | section | — | Local checks | `AGENTS.md:36` | — | Look for: |
+| `agents--further-reading` | section | — | Further reading | `AGENTS.md:44` | — | - README.md |
+| `agents--landed-status-2026-07-09-wsfull-plan-priority-1` | section | — | Landed status (2026-07-09, wsfull plan priority 1) | `AGENTS.md:54` | — | chore/tero-index-cabal-ready landed (thin hygiene + pending branch per plan): |
 | `contributing` | section | — | Contributing to webpuppet | `CONTRIBUTING.md:1` | — | Thank you for your interest in contributing to webpuppet! This document provides guidelines for contributing to the project. |
 | `contributing--development-setup` | section | — | Development Setup | `CONTRIBUTING.md:5` | — | - Rust 1.75+ (latest stable recommended) |
 | `contributing--prerequisites` | section | — | Prerequisites | `CONTRIBUTING.md:7` | — | - Rust 1.75+ (latest stable recommended) |
