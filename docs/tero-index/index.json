@@ -64,6 +64,16 @@
       "summary": "- README.md"
     },
     {
+      "anchor": "agents--landed-status-2026-07-09-wsfull-plan-priority-1",
+      "family": "doc",
+      "kind": "section",
+      "title": "Landed status (2026-07-09, wsfull plan priority 1)",
+      "file": "AGENTS.md",
+      "line": 54,
+      "tag": "Empirical/Declared",
+      "summary": "chore/tero-index-cabal-ready landed (thin hygiene + pending branch per plan):"
+    },
+    {
       "anchor": "contributing",
       "family": "doc",
       "kind": "section",
