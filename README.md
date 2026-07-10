@@ -396,3 +396,5 @@ This tool is for educational and research purposes only. Use of this tool to aut
 
 - [Assessment & gaps](docs/ASSESSMENT.md)
 - [Product roadmap & API plans](docs/ROADMAP.md)
+## Semver 2026-07-10
+v0.1.0 $d (supportive web/puppet helper from mycelium read-only).
