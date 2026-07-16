@@ -246,7 +246,14 @@ Capabilities are declared per provider in code (not runtime UI detection yet). F
 - **Browser profiles**: Sandboxed per-provider in local data directory
 - **Rate limiting**: Prevents abuse detection with humanized delays
 - **Session isolation**: Each provider has independent browser context
-- **Response screening**: Automatic filtering of security threats
+- **Mandatory screening**: Input/output security pipeline on `prompt` by default
+- **Reporting**: See [SECURITY.md](SECURITY.md); historical notes in [SECURITY_AUDIT.md](SECURITY_AUDIT.md)
+
+### Development checks
+
+```bash
+./scripts/check.sh   # fmt, clippy -D warnings, build, test (CI parity)
+```
 
 ## Limitations
 
@@ -334,14 +341,11 @@ webpuppet/
 │   ├── error.rs        # Error types
 │   ├── puppet.rs       # Main orchestrator
 │   ├── ratelimit.rs    # Rate limiting
-│   ├── security.rs     # Content screening & prompt injection filtering
+│   ├── security/       # Pipeline, screening, PII/secrets, injection, proxy
 │   ├── session.rs      # Browser session management
-│   └── providers/
-│       ├── mod.rs      # Provider exports
-│       ├── traits.rs   # ProviderTrait definition
-│       ├── claude.rs   # Claude implementation
-│       ├── gemini.rs   # Gemini implementation
-│       └── grok.rs     # Grok implementation
+│   └── providers/      # Claude, Gemini, Grok, ChatGPT, Perplexity, …
+├── scripts/check.sh    # Local CI parity gate
+└── tests/              # Integration tests
 ```
 
 ## System Requirements

@@ -1,9 +1,11 @@
 # Security Audit Report
-## webpuppet v0.1.0-alpha.2
+## webpuppet v0.1.0-alpha.2 (historical point-in-time)
 
 **Date:** January 6, 2026  
 **Audit Type:** Comprehensive Security Review & Compliance Assessment  
-**Status:** ✅ PASSED
+**Status:** ✅ PASSED (as of audit date; crate tip is now `0.1.5-alpha` — re-run `cargo audit` / `cargo deny` for current deps)
+
+> For current vulnerability **reporting**, see [SECURITY.md](SECURITY.md).
 
 ## Executive Summary
 
