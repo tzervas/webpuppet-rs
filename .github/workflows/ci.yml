@@ -1,6 +1,7 @@
 name: CI
 
-# Manual only — run the same checks locally via ./scripts/check.sh
+# Local SoT: ./scripts/check.sh (fmt, clippy -D warnings, build, test).
+# Also runs on push/PR to main|dev|develop and workflow_dispatch.
 on:
   push:
     branches:
