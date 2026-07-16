@@ -634,7 +634,9 @@ mod tests {
     #[test]
     fn test_prompt_request_builder() {
         let mut request = PromptRequest::new("test message").with_context("test context");
-        request.metadata.insert("key".to_string(), "value".to_string());
+        request
+            .metadata
+            .insert("key".to_string(), "value".to_string());
 
         assert_eq!(request.message, "test message");
         assert_eq!(request.context, Some("test context".into()));

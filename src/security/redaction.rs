@@ -29,7 +29,7 @@ pub fn redact(content: &str, findings: &[Finding]) -> String {
     let mut result = content.to_string();
 
     // Apply offset-based redactions in reverse order (to preserve positions)
-    offset_redactions.sort_by(|a, b| b.0.cmp(&a.0));
+    offset_redactions.sort_by_key(|a| std::cmp::Reverse(a.0));
     for (offset, length, redaction) in &offset_redactions {
         let end = (*offset + *length).min(result.len());
         if *offset < result.len() {
@@ -140,19 +140,17 @@ mod tests {
     fn test_avoid_double_redaction() {
         // Test that already-redacted content is not redacted again
         let content = "Email: user@example.com";
-        let findings = vec![
-            Finding {
-                detector: "pii".into(),
-                category: "email".into(),
-                description: "Email".into(),
-                matched_content: "***@***".into(),  // Already redacted in matched_content
-                severity: Severity::High,
-                confidence: 0.9,
-                offset: None,
-                length: None,
-                redaction: Some("[REDACTED]".into()),
-            },
-        ];
+        let findings = vec![Finding {
+            detector: "pii".into(),
+            category: "email".into(),
+            description: "Email".into(),
+            matched_content: "***@***".into(), // Already redacted in matched_content
+            severity: Severity::High,
+            confidence: 0.9,
+            offset: None,
+            length: None,
+            redaction: Some("[REDACTED]".into()),
+        }];
 
         let result = redact(content, &findings);
         // Should not replace anything because matched_content contains ***
