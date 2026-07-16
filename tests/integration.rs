@@ -17,13 +17,9 @@ fn test_browser_detection_finds_brave() {
 
     // Soft-skip when no browser is installed (CI/local without Chrome/Brave)
     if browsers.is_empty() {
-<<<<<<< HEAD
-        eprintln!("skip: no browsers detected (install Brave/Chrome/Chromium for full integration)");
-=======
         eprintln!(
             "skip: no browsers detected (install Brave/Chrome/Chromium for full integration)"
         );
->>>>>>> 6d16d0a (fix: soft-skip browser detection test when no browser installed)
         return;
     }
 
