@@ -8,12 +8,12 @@ use aes_gcm::{
     Aes256Gcm, Nonce,
 };
 use pbkdf2::pbkdf2_hmac;
-use secrecy::{ExposeSecret, Secret};
+use secrecy::{ExposeSecret, SecretBox};
 use sha2::Sha256;
 
 /// Helper for encrypting sensitive data like cookies.
 pub struct DataEncryption {
-    key: Secret<[u8; 32]>,
+    key: SecretBox<[u8; 32]>,
 }
 
 impl DataEncryption {
@@ -22,7 +22,7 @@ impl DataEncryption {
         let mut key = [0u8; 32];
         pbkdf2_hmac::<Sha256>(passphrase.as_bytes(), salt, 100_000, &mut key);
         Self {
-            key: Secret::new(key),
+            key: SecretBox::new(Box::new(key)),
         }
     }
 
