@@ -29,7 +29,12 @@ webpuppet is designed as a foundational library that can be integrated into larg
 - **Security Partner**: [security-mcp](https://github.com/tzervas/security-mcp) - provides content screening, injection detection, and security guardrails
 - **MCP Integration**: [webpuppet-mcp](https://github.com/tzervas/webpuppet-rs-mcp) - exposes webpuppet as an MCP server
 
-For systems requiring enhanced security, use the **security-mcp** server as the primary interface to webpuppet, which automatically manages both servers together.
+For multi-agent MCP deployments, run **webpuppet-rs-mcp** as a child of
+**security-mcp** [wrap mode](https://github.com/tzervas/security-mcp/blob/main/docs/bulletins/security-mcp-wrap.md)
+(`--wrap` / `SECURITY_MCP_WRAP=1`, `--wrap-command` pointing at `webpuppet-mcp`).
+The wrap contract is **DRAFT** on `security-mcp` `main` (not STABLE); this crate does not
+embed wrap—operators configure security-mcp separately. In-library screening still runs on
+every `WebPuppet::prompt` via `SecurityPipeline` (see [SECURITY.md](SECURITY.md)).
 
 ## Overview
 
