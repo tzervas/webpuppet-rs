@@ -1,5 +1,10 @@
 # webpuppet
 
+<!-- FLEET-BADGES:BEGIN -->
+[![CI](https://github.com/tzervas/webpuppet-rs/actions/workflows/fleet-ci.yml/badge.svg?branch=main)](https://github.com/tzervas/webpuppet-rs/actions/workflows/fleet-ci.yml?query=branch%3Amain)
+[![Security](https://github.com/tzervas/webpuppet-rs/actions/workflows/fleet-security.yml/badge.svg?branch=main)](https://github.com/tzervas/webpuppet-rs/actions/workflows/fleet-security.yml?query=branch%3Amain)
+<!-- FLEET-BADGES:END -->
+
 **Web Browser Programmatic Automation & Control Library**
 
 A Rust library for programmatic automation and control of web browsers, enabling programmatic interaction with web applications through native browser automation. Designed for research workflows, automated data collection, and web interaction testing when direct APIs are unavailable or restricted.
