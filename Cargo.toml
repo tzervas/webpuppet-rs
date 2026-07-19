@@ -65,7 +65,7 @@ secrecy = { version = "^0.10" }
 parking_lot = "^0.12"
 
 # HTML parsing for response extraction
-scraper = "^0.25"
+scraper = "^0.27"
 
 # Regex for security screening
 regex = "^1.12"
