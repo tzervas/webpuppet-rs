@@ -1,7 +1,18 @@
 name: CI
 
-# Manual only — run the same checks locally via ./scripts/check.sh
+# Local SoT: ./scripts/check.sh (fmt, clippy -D warnings, build, test).
+# Also runs on push/PR to main|dev|develop and workflow_dispatch.
 on:
+  push:
+    branches:
+      - main
+      - dev
+      - develop
+  pull_request:
+    branches:
+      - main
+      - dev
+      - develop
   workflow_dispatch:
 
 permissions:
@@ -15,7 +26,7 @@ env:
 jobs:
   build-and-test:
     name: Build and Test (local parity)
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64, podman]
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4

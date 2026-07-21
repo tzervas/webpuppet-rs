@@ -78,20 +78,29 @@ Follow this pattern: `type/description-in-kebab-case`
 
 ### Code Style
 - Use `rustfmt` for formatting: `cargo fmt`
-- Use `clippy` for linting: `cargo clippy`
+- Use `clippy` for linting: `cargo clippy --all-targets --all-features -- -D warnings`
 - Write documentation for all public APIs
 - Include examples in documentation where helpful
 - Follow Rust naming conventions
 
+### Local CI parity (authoritative gate)
+
+Prefer the single entrypoint used by GitHub Actions:
+
+```bash
+./scripts/check.sh        # fmt --check, clippy -D warnings, build, test
+./scripts/check.sh --fix  # apply rustfmt
+```
+
+See [docs/LOCAL_CHECKS.md](docs/LOCAL_CHECKS.md).
+
 ## Pull Request Process
 
 ### Before Submitting
-1. Ensure all tests pass: `cargo test`
-2. Run security checks: `cargo audit && cargo deny check`
-3. Format code: `cargo fmt`
-4. Check for lint issues: `cargo clippy`
-5. Update documentation if needed
-6. Add tests for new functionality
+1. Run the local parity gate: `./scripts/check.sh`
+2. Run security checks when tools are installed: `cargo audit && cargo deny check`
+3. Update documentation if needed
+4. Add tests for new functionality
 
 ### PR Guidelines
 - Use a clear, descriptive title
@@ -110,7 +119,7 @@ Follow this pattern: `type/description-in-kebab-case`
 
 ### Reporting Security Issues
 - **Do not** create public issues for security vulnerabilities
-- Email security reports to: [security contact needed]
+- Follow [SECURITY.md](SECURITY.md) for private reporting
 - Include detailed reproduction steps
 - Allow time for response before public disclosure
 

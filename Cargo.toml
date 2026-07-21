@@ -35,7 +35,7 @@ rustls-tls = ["reqwest/rustls-tls"]
 [dependencies]
 # Browser automation - chromiumoxide is pure Rust, async-first
 chromiumoxide = { version = "^0.7", default-features = false, features = ["tokio-runtime"], optional = true }
-fantoccini = { version = "^0.21", optional = true }
+fantoccini = { version = "^0.22", optional = true }
 
 # Async runtime
 tokio = { version = "^1.49", features = ["full"] }
@@ -47,7 +47,7 @@ reqwest = { version = "^0.12", default-features = false, features = ["json", "co
 # Serialization
 serde = { version = "^1.0", features = ["derive"] }
 serde_json = "^1.0"
-toml = "^0.8"
+toml = "^1.0"
 humantime-serde = "^1.1"
 
 # Error handling
@@ -59,7 +59,7 @@ tracing = "^0.1"
 
 # Security - credential handling  
 keyring = { version = "^3.6", optional = true }
-secrecy = { version = "^0.8" }
+secrecy = { version = "^0.10" }
 
 # Rate limiting
 parking_lot = "^0.12"
@@ -78,7 +78,7 @@ chrono = { version = "^0.4", features = ["serde"] }
 
 # Utilities
 uuid = { version = "^1.19", features = ["v4"] }
-dirs = "^5.0"
+dirs = "^6.0"
 fastrand = "^2.3"
 urlencoding = "^2.1"
 url = "^2.5"
@@ -86,7 +86,7 @@ aes-gcm = "^0.10"
 pbkdf2 = "^0.12"
 chacha20poly1305 = "^0.10"
 sha2 = "^0.10"
-rand = "^0.9"
+rand = "^0.10"
 base64 = "^0.22"
 
 [dev-dependencies]
