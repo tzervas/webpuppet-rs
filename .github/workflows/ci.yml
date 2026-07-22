@@ -33,11 +33,14 @@ jobs:
 
       - name: Install system deps
         run: |
-          if command -v sudo >/dev/null 2>&1 && sudo -n true >/dev/null 2>&1; then
+          if [ "$(id -u)" -eq 0 ]; then
+            apt-get update || true
+            apt-get install -y libssl-dev pkg-config || true
+          elif command -v sudo >/dev/null 2>&1 && sudo -n true >/dev/null 2>&1; then
             sudo apt-get update || true
             sudo apt-get install -y libssl-dev pkg-config || true
           else
-            echo "Skipping package installation (no sudo privileges/container context)"
+            echo "Skipping package installation (no root or sudo privileges)"
           fi
 
       - name: Set up Rust
