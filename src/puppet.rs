@@ -1,4 +1,4 @@
-//! WebPuppet - main automation orchestrator.
+//! WebPuppet - main automation orchestrator with mandatory security screening.
 
 use std::collections::HashMap;
 use std::sync::Arc;
@@ -8,10 +8,14 @@ use tokio::sync::RwLock;
 
 use crate::config::Config;
 use crate::credentials::CredentialStore;
+use crate::display::DisplayMode;
 use crate::error::{Error, Result};
 use crate::providers::{Provider, ProviderTrait};
 use crate::ratelimit::RateLimiter;
-use crate::security::{ContentScreener, ScreeningConfig, ScreeningResult};
+use crate::security::pipeline::{PipelineConfig, PipelineResult, SecurityPipeline};
+use crate::security::proxy::McpSecurityProxy;
+use crate::security::screening::{ContentScreener, ScreeningConfig, ScreeningResult};
+use crate::security::Direction;
 use crate::session::Session;
 
 #[cfg(feature = "chatgpt")]
@@ -100,14 +104,24 @@ pub struct PromptResponse {
     pub metadata: HashMap<String, String>,
 }
 
-/// Main WebPuppet orchestrator.
+/// Main WebPuppet orchestrator with integrated security pipeline.
+///
+/// All prompts are screened through the security pipeline by default.
+/// Input is screened for injection attacks before sending to providers.
+/// Output is screened for PII, secrets, and content manipulation before
+/// being returned to the caller.
 pub struct WebPuppet {
     config: Config,
     credentials: Arc<CredentialStore>,
     sessions: Arc<RwLock<HashMap<Provider, Session>>>,
     providers: HashMap<Provider, Arc<dyn ProviderTrait>>,
     rate_limiter: Arc<RateLimiter>,
+    /// Legacy content screener (for backward compatibility).
     screener: Arc<ContentScreener>,
+    /// Unified security pipeline (mandatory).
+    pipeline: Arc<SecurityPipeline>,
+    /// MCP security proxy for tool call routing enforcement.
+    mcp_proxy: Arc<McpSecurityProxy>,
 }
 
 impl WebPuppet {
@@ -127,9 +141,6 @@ impl WebPuppet {
     }
 
     /// Get the declared capabilities for a provider.
-    ///
-    /// Note: This is currently based on the provider implementation's static
-    /// `capabilities()` declaration (not runtime UI detection).
     pub fn provider_capabilities(
         &self,
         provider: Provider,
@@ -150,7 +161,6 @@ impl WebPuppet {
         }
         drop(sessions);
 
-        // Create new session
         let session = Session::new(&self.config, provider, self.credentials.clone()).await?;
 
         let mut sessions = self.sessions.write().await;
@@ -175,12 +185,35 @@ impl WebPuppet {
         Ok(())
     }
 
-    /// Send a prompt to a provider.
+    /// Send a prompt to a provider with mandatory security screening.
+    ///
+    /// Both the input (prompt) and output (response) are screened through
+    /// the security pipeline. Input is checked for injection attacks;
+    /// output is checked for PII, secrets, and content manipulation.
+    ///
+    /// Returns the response along with the pipeline screening results
+    /// for both input and output.
     pub async fn prompt(
         &self,
         provider: Provider,
         request: PromptRequest,
     ) -> Result<PromptResponse> {
+        // Screen input through the security pipeline
+        let input_screening = self.pipeline.screen_input(&request.message);
+        if !input_screening.is_allowed() {
+            tracing::warn!(
+                "Input to {} BLOCKED by security pipeline: {} finding(s), risk={:.2}",
+                provider,
+                input_screening.findings.len(),
+                input_screening.risk_score,
+            );
+            return Err(Error::SecurityBlocked {
+                direction: "input".into(),
+                findings: input_screening.findings.len(),
+                risk_score: input_screening.risk_score,
+            });
+        }
+
         let provider_impl = self
             .providers
             .get(&provider)
@@ -203,7 +236,7 @@ impl WebPuppet {
         }
 
         // Send prompt
-        let response = if let Some(ref conv_id) = request.conversation_id {
+        let mut response = if let Some(ref conv_id) = request.conversation_id {
             provider_impl
                 .continue_conversation(&session, conv_id, &request)
                 .await?
@@ -211,16 +244,34 @@ impl WebPuppet {
             provider_impl.send_prompt(&session, &request).await?
         };
 
+        // Screen output through the security pipeline
+        let output_screening = self.pipeline.screen_output(&response.text);
+        if !output_screening.is_allowed() {
+            tracing::warn!(
+                "Response from {} BLOCKED by security pipeline: {} finding(s), risk={:.2}",
+                provider,
+                output_screening.findings.len(),
+                output_screening.risk_score,
+            );
+            return Err(Error::SecurityBlocked {
+                direction: "output".into(),
+                findings: output_screening.findings.len(),
+                risk_score: output_screening.risk_score,
+            });
+        }
+
+        // Apply redacted content if available
+        if let Some(ref redacted) = output_screening.redacted_content {
+            response.text = redacted.clone();
+        }
+
         Ok(response)
     }
 
-    /// Send a prompt and screen the response for security issues.
+    /// Send a prompt with full screening results returned.
     ///
-    /// This method automatically filters out:
-    /// - Invisible text (1pt fonts, zero-width characters)
-    /// - Background-matching text
-    /// - Potential prompt injection attempts
-    /// - Encoded payloads
+    /// Like [`prompt`], but also returns the pipeline results for both
+    /// input and output screening so callers can inspect findings.
     pub async fn prompt_screened(
         &self,
         provider: Provider,
@@ -228,10 +279,9 @@ impl WebPuppet {
     ) -> Result<(PromptResponse, ScreeningResult)> {
         let mut response = self.prompt(provider, request).await?;
 
-        // Screen the response
+        // Also run legacy content screener for backward compatibility
         let screening = self.screener.screen(&response.text);
 
-        // Replace response text with sanitized version
         if !screening.passed {
             tracing::warn!(
                 "Response from {} flagged with risk score {:.2}: {:?}",
@@ -245,7 +295,6 @@ impl WebPuppet {
             );
         }
 
-        // Use sanitized text
         response.text = screening.sanitized.clone();
 
         Ok((response, screening))
@@ -276,9 +325,24 @@ impl WebPuppet {
         Err(last_error.unwrap_or_else(|| Error::Config("All providers failed".into())))
     }
 
-    /// Get the content screener for manual use.
+    /// Get the legacy content screener for manual use.
     pub fn screener(&self) -> &ContentScreener {
         &self.screener
+    }
+
+    /// Get the unified security pipeline.
+    pub fn pipeline(&self) -> &SecurityPipeline {
+        &self.pipeline
+    }
+
+    /// Get the MCP security proxy.
+    pub fn mcp_proxy(&self) -> &McpSecurityProxy {
+        &self.mcp_proxy
+    }
+
+    /// Screen arbitrary content through the security pipeline.
+    pub fn screen(&self, content: &str, direction: Direction) -> PipelineResult {
+        self.pipeline.screen(content, direction)
     }
 
     /// Send a prompt to the best available provider.
@@ -289,7 +353,6 @@ impl WebPuppet {
             return Err(Error::Config("No providers configured".into()));
         }
 
-        // Try providers in order until one succeeds
         let mut last_error = None;
         for provider in providers {
             match self.prompt(provider, request.clone()).await {
@@ -330,8 +393,10 @@ impl WebPuppet {
 pub struct WebPuppetBuilder {
     config: Option<Config>,
     screening_config: Option<ScreeningConfig>,
+    pipeline_config: Option<PipelineConfig>,
     providers: Vec<Provider>,
-    headless: bool,
+    display_mode: Option<DisplayMode>,
+    headless: Option<bool>,
 }
 
 impl WebPuppetBuilder {
@@ -355,22 +420,52 @@ impl WebPuppetBuilder {
         self
     }
 
-    /// Set headless mode.
+    /// Set headless mode (legacy, prefer `display_mode`).
     pub fn headless(mut self, headless: bool) -> Self {
-        self.headless = headless;
+        self.headless = Some(headless);
         self
     }
 
-    /// Set custom screening configuration.
+    /// Set display mode: Headless, HeadsUp, or Dashboard.
+    pub fn display_mode(mut self, mode: DisplayMode) -> Self {
+        self.display_mode = Some(mode);
+        self
+    }
+
+    /// Set custom screening configuration (legacy ContentScreener).
     pub fn with_screening_config(mut self, config: ScreeningConfig) -> Self {
         self.screening_config = Some(config);
+        self
+    }
+
+    /// Set custom security pipeline configuration.
+    pub fn with_pipeline_config(mut self, config: PipelineConfig) -> Self {
+        self.pipeline_config = Some(config);
         self
     }
 
     /// Build the WebPuppet instance.
     pub async fn build(self) -> Result<WebPuppet> {
         let mut config = self.config.unwrap_or_default();
-        config.browser.headless = self.headless;
+
+        // Apply display mode
+        if let Some(mode) = self.display_mode {
+            config.browser.display_mode = mode;
+            config.browser.headless = mode.is_headless();
+            config.browser.dual_head = mode.is_dual_head();
+        } else if let Some(headless) = self.headless {
+            config.browser.headless = headless;
+            if headless {
+                config.browser.display_mode = DisplayMode::Headless;
+            } else {
+                config.browser.display_mode = DisplayMode::HeadsUp;
+            }
+        }
+
+        // Apply pipeline config if provided
+        if let Some(pipeline_config) = self.pipeline_config {
+            config.security.pipeline = pipeline_config;
+        }
 
         let credentials = Arc::new(CredentialStore::new()?);
         let rate_limiter = Arc::new(RateLimiter::new(&config.rate_limit));
@@ -414,7 +509,6 @@ impl WebPuppetBuilder {
                 Provider::Kaggle => {
                     providers.insert(provider, Arc::new(KaggleProvider::new()));
                 }
-                // Handle providers not enabled by features
                 #[allow(unreachable_patterns)]
                 _ => {
                     tracing::debug!("Provider {:?} not enabled via features", provider);
@@ -422,11 +516,31 @@ impl WebPuppetBuilder {
             }
         }
 
-        // Initialize content screener
+        // Initialize legacy content screener
         let screener = Arc::new(
             self.screening_config
                 .map(ContentScreener::with_config)
                 .unwrap_or_default(),
+        );
+
+        // Initialize security pipeline (mandatory)
+        let pipeline = Arc::new(SecurityPipeline::with_config(
+            config.security.pipeline.clone(),
+        ));
+
+        // Initialize MCP security proxy
+        let mcp_proxy = Arc::new(McpSecurityProxy::new(pipeline.clone()));
+
+        // Register configured MCP servers
+        for server_config in &config.security.mcp_servers {
+            mcp_proxy.register_server(server_config.clone()).await;
+        }
+
+        tracing::info!(
+            display_mode = %config.browser.display_mode,
+            screening_enforced = config.security.enforce_screening,
+            mcp_servers = config.security.mcp_servers.len(),
+            "WebPuppet initialized with integrated security pipeline"
         );
 
         Ok(WebPuppet {
@@ -436,11 +550,13 @@ impl WebPuppetBuilder {
             providers,
             rate_limiter,
             screener,
+            pipeline,
+            mcp_proxy,
         })
     }
 }
 
-/// Convenience function for quick prompts.
+/// Convenience function for quick prompts (with mandatory screening).
 pub async fn quick_prompt(
     provider: Provider,
     message: impl Into<String>,
@@ -458,4 +574,110 @@ pub async fn quick_prompt(
     puppet.close().await?;
 
     Ok(response)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::security::detectors::{Detector, Direction};
+    use crate::security::injection::InjectionDetector;
+    use crate::security::pii::PiiDetector;
+
+    #[tokio::test]
+    async fn test_prompt_input_screening_blocks_injection() {
+        // Test that malicious input is blocked by the security pipeline
+        let puppet = WebPuppet::builder()
+            .headless(true)
+            .build()
+            .await
+            .expect("Failed to build WebPuppet");
+
+        // Test with SQL injection attempt
+        let malicious_input = "'; DROP TABLE users; --";
+        let result = puppet
+            .prompt(Provider::Claude, PromptRequest::new(malicious_input))
+            .await;
+
+        // Should return SecurityBlocked error
+        assert!(result.is_err());
+        match result {
+            Err(Error::SecurityBlocked { direction, .. }) => {
+                assert_eq!(direction, "input");
+            }
+            _ => panic!("Expected SecurityBlocked error for input"),
+        }
+    }
+
+    #[test]
+    fn test_security_pipeline_detects_pii() {
+        // Test that PII detection works correctly
+        let detector = PiiDetector::default();
+        let content = "My email is user@example.com and phone is 555-123-4567";
+        let findings = detector.detect(content, Direction::Output);
+
+        assert!(!findings.is_empty());
+        assert!(findings.iter().any(|f| f.category == "email"));
+        assert!(findings.iter().any(|f| f.category == "phone"));
+    }
+
+    #[test]
+    fn test_security_pipeline_detects_injection() {
+        // Test that injection detection works correctly
+        let detector = InjectionDetector::default();
+        let content = "SELECT * FROM users WHERE id = 1 UNION SELECT * FROM passwords";
+        let findings = detector.detect(content, Direction::Input);
+
+        assert!(!findings.is_empty());
+        assert!(findings.iter().any(|f| f.category == "sql_injection"));
+    }
+
+    #[test]
+    fn test_prompt_request_builder() {
+        let mut request = PromptRequest::new("test message").with_context("test context");
+        request
+            .metadata
+            .insert("key".to_string(), "value".to_string());
+
+        assert_eq!(request.message, "test message");
+        assert_eq!(request.context, Some("test context".into()));
+        assert_eq!(request.metadata.get("key"), Some(&"value".to_string()));
+    }
+
+    #[test]
+    fn test_redaction_engine_preserves_positions() {
+        use crate::security::detectors::{Finding, Severity};
+        use crate::security::redaction::redact;
+
+        let content = "Email: user@example.com, SSN: 123-45-6789";
+        let findings = vec![
+            Finding {
+                detector: "pii".into(),
+                category: "email".into(),
+                description: "Email".into(),
+                matched_content: "user@example.com".into(),
+                severity: Severity::High,
+                confidence: 0.9,
+                offset: Some(7),
+                length: Some(16),
+                redaction: Some("u***@***".into()),
+            },
+            Finding {
+                detector: "pii".into(),
+                category: "ssn".into(),
+                description: "SSN".into(),
+                matched_content: "123-45-6789".into(),
+                severity: Severity::Critical,
+                confidence: 0.9,
+                offset: Some(30),
+                length: Some(11),
+                redaction: Some("***-**-****".into()),
+            },
+        ];
+
+        let result = redact(content, &findings);
+        assert!(result.contains("u***@***"));
+        assert!(result.contains("***-**-****"));
+        assert!(!result.contains("user@example.com"));
+        assert!(!result.contains("123-45-6789"));
+    }
 }
