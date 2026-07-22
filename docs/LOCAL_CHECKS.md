@@ -1,7 +1,8 @@
 # Local checks (CI parity)
 
-GitHub Actions workflows in this repo are **manual only** (`workflow_dispatch`).
-Day-to-day quality gates run **locally** so remote CI is not the only source of truth.
+Local quality gates are the preferred day-to-day source of truth. GitHub Actions
+CI also runs the same script on push/PR to `main`/`dev`/`develop` and via
+`workflow_dispatch` (self-hosted podman fleet for linux x64).
 
 ## Run everything the remote job would run
 
@@ -9,11 +10,17 @@ Day-to-day quality gates run **locally** so remote CI is not the only source of 
 ./scripts/check.sh
 ```
 
+This runs, in order:
+
+1. `cargo fmt --check`
+2. `cargo clippy --all-targets --all-features -- -D warnings`
+3. `cargo build --all-features`
+4. `cargo test --all-features --verbose`
+
 Optional:
 
 ```bash
-./scripts/check.sh --quick   # skip slower steps (bench/audit when applicable)
-./scripts/check.sh --fix  # apply formatters instead of --check
+./scripts/check.sh --fix  # apply rustfmt instead of --check
 ```
 
 ## Tero index
@@ -29,4 +36,5 @@ Artifacts land in `docs/tero-index/` (`index.json`, `INDEX.md`, `MANIFEST.toml`,
 
 ## Remote (optional)
 
-In GitHub: **Actions → CI → Run workflow**.
+In GitHub: **Actions → CI → Run workflow** (manual), or open a PR / push to a
+watched branch for automatic runs.
