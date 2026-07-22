@@ -7,7 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- `SECURITY.md` vulnerability reporting policy (GitHub Advisories / maintainer)
+- Documented local CI parity gate (`./scripts/check.sh`) in README/CONTRIBUTING
+
 ### Changed
+- Docs honesty: CI is push/PR + `workflow_dispatch` (not manual-only); assessment notes screening pipeline on main
 - **BREAKING**: Renamed crate from `embeddenator-webpuppet` to `webpuppet`
 - Simplified all internal references from embeddenator naming
 - Previous version (embeddenator-webpuppet v0.1.0-alpha.3) has been yanked from crates.io
